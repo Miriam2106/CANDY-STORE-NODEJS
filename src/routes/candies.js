@@ -25,7 +25,7 @@ router.post('/create',async(req,res)=>{
     const candy={
         name,price,expiration,isSalad,date_registered,date_created,status:1
     };
-    await pool.query('INSERT INTO candies set ?', [candies])
+    await pool.query('INSERT INTO candies set ?', [candy])
     res.json({
         status:"200",
         message:"Se ha registrado correctamente",
@@ -36,7 +36,7 @@ router.post('/update/:id',async(req,res)=>{
     const {id} = req.params;
     const {name,price,expiration,isSalad,date_registered,date_created} = req.body;
     const candy= {name,price,expiration,isSalad,date_registered,date_created};
-    await pool.query('UPDATE candies SET ? WHERE id = ?',[candies,id]);
+    await pool.query('UPDATE candies SET ? WHERE id = ?',[candy,id]);
     res.json({
         status:"200",
         message:"Se ha actualizado correctamente",
